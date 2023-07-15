@@ -10,17 +10,17 @@ bot.start((ctx) => {
 bot.on("text", (ctx) => {
   const username = ctx.message.text;
   if (username.startsWith("+")) {
-    const keyboard = Markup.inlineKeyboard(
+    const keyboard = Markup.inlineKeyboard([
       [Markup.button.url("Whatsapp", `https://wa.me/${username}`)],
       [Markup.button.url("Telegram", `https://t.me/${username}`)]
-    );
+    ]);
     ctx.reply("Ini adalah nomor telepon.", keyboard);
   } else {
-    const keyboard = Markup.inlineKeyboard(
+    const keyboard = Markup.inlineKeyboard([
       [Markup.button.url("Instagram", `https://instagram.com/${username}`)],
       [Markup.button.url("Tiktok", `https://tiktok.com/${username}`)],
       [Markup.button.url("Onlyfans", `https://onlyfans.com/${username}`)]
-    );
+    ]);
     ctx.reply("Ini adalah username.", keyboard);
   }
 });
