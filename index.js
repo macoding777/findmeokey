@@ -16,12 +16,16 @@ bot.on("text", (ctx) => {
     ]);
     ctx.reply("Ini adalah nomor telepon.", keyboard);
   } else {
-    const keyboard = Markup.inlineKeyboard([
-      [Markup.button.url("Instagram", `https://instagram.com/${username}`)],
-      [Markup.button.url("Tiktok", `https://tiktok.com/${username}`)],
-      [Markup.button.url("Onlyfans", `https://onlyfans.com/${username}`)],
-    ]);
-    ctx.reply("Ini adalah username.", keyboard);
+    // jika dimulai dari / maka akan dianggap sebagai command
+    if (username.startsWith("/")) {
+    } else {
+      const keyboard = Markup.inlineKeyboard([
+        [Markup.button.url("Instagram", `https://instagram.com/${username}`)],
+        [Markup.button.url("Tiktok", `https://tiktok.com/${username}`)],
+        [Markup.button.url("Onlyfans", `https://onlyfans.com/${username}`)],
+      ]);
+      ctx.reply("Ini adalah username.", keyboard);
+    }
   }
 });
 
