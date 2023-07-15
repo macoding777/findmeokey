@@ -18,9 +18,7 @@ bot.on("text", (ctx) => {
   } else {
     // jika dimulai dari / maka akan dianggap sebagai command
     if (username.startsWith("/")) {
-      bot.command("help", (ctx) => {
         ctx.reply("Silakan masukkan username yang ingin Anda cari.");
-      });
     } else {
       const keyboard = Markup.inlineKeyboard([
         [Markup.button.url("Instagram", `https://instagram.com/${username}`)],
