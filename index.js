@@ -12,17 +12,35 @@ bot.on("text", (ctx) => {
   if (username.startsWith("+")) {
     const keyboard = Markup.inlineKeyboard([
       [Markup.button.url("Whatsapp", `https://wa.me/${username}`)],
-      [Markup.button.url("Telegram", `https://t.me/${username}`)]
+      [Markup.button.url("Telegram", `https://t.me/${username}`)],
     ]);
     ctx.reply("Ini adalah nomor telepon.", keyboard);
   } else {
     const keyboard = Markup.inlineKeyboard([
       [Markup.button.url("Instagram", `https://instagram.com/${username}`)],
       [Markup.button.url("Tiktok", `https://tiktok.com/${username}`)],
-      [Markup.button.url("Onlyfans", `https://onlyfans.com/${username}`)]
+      [Markup.button.url("Onlyfans", `https://onlyfans.com/${username}`)],
     ]);
     ctx.reply("Ini adalah username.", keyboard);
   }
 });
 
-bot.launch();
+// if NODE_ENV=production
+if (process.env.NODE_ENV === "production") {
+  // bot.telegram.setWebhook(process.env.HEROKU_URL + bot.token);
+  // bot.startWebhook("/" + bot.token, null, process.env.PORT);
+  bot
+    .launch({
+      webhook: {
+        domain: process.env.HEROKU_URL, // Your domain URL (where server code will be deployed)
+        port: process.env.PORT || 8000,
+      },
+    })
+    .then(() => {
+      console.info(`The bot  is running on server`);
+    });
+} else {
+  bot.launch().then(() => {
+    console.info(`The bot is running locally`);
+  });
+}
