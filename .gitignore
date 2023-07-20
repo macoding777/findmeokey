@@ -1,3 +1,22 @@
-package-lock.json
-.env
+# Direktori Node.js
 node_modules/
+npm-debug.log
+
+# File log
+*.log
+
+# File yang disebabkan oleh editor atau sistem operasi
+*.swp
+.DS_Store
+
+# Environment variables (jika Anda menggunakan dotenv atau serupa)
+.env
+.env.local
+.env.*.local
+.env.development
+.env.test
+.env.production
+
+# Dependency lock files (misalnya yarn.lock atau package-lock.json)
+yarn.lock
+package-lock.json
