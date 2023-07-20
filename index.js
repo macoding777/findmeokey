@@ -1,4 +1,5 @@
 const { Telegraf, Markup } = require("telegraf");
+const mongoose = require('mongoose');
 require("dotenv").config();
 
 const bot = new Telegraf(process.env.TOKEN);
@@ -18,7 +19,7 @@ bot.on("text", (ctx) => {
   } else {
     // jika dimulai dari / maka akan dianggap sebagai command
     if (username.startsWith("/")) {
-        ctx.reply("Silakan masukkan username yang ingin Anda cari.");
+      ctx.reply("Silakan masukkan username yang ingin Anda cari.");
     } else {
       const keyboard = Markup.inlineKeyboard([
         [Markup.button.url("Instagram", `https://instagram.com/${username}`)],
